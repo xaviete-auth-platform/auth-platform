@@ -1,0 +1,15 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+    <app-topbar></app-topbar>
+    <div class="layout-sidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+    <!-- TODO: Mirar de como eliminar el app-config de manera que no queden archivos residuales -->
+    <!-- <app-config></app-config> -->
+    <div class="layout-mask"></div>
+</div>
