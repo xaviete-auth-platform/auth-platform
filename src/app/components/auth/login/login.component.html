@@ -12,20 +12,56 @@
                 </div>
 
                 <div class="w-full md:w-10 mx-auto">
-                    <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
-                    <input id="email" type="text" placeholder="Email address" pInputText class="w-full mb-3" style="padding:1rem;">
 
-                    <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
-                    <p-password id="password" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" styleClass="w-full mb-3"></p-password>
+                    <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
 
-                    <div class="flex align-items-center justify-content-between mb-5">
-                        <div class="flex align-items-center">
-                            <p-checkbox id="remember" [binary]="true" styleClass="mr-2"></p-checkbox>
-                            <label for="remember">Remember me</label>
+                        <div class="mb-3">
+
+                            <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
+                            <input id="email" type="text" formControlName="email" placeholder="Email address" pInputText class="w-full p-3">
+
+                            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.dirty" class="mt-2">
+
+                                <div *ngIf="loginForm.get('email')?.errors?.['required']" class="p-error">
+                                    Email is required
+                                </div>
+
+                                <div *ngIf="loginForm.get('email')?.errors?.['email']" class="p-error">
+                                    Email is not valid
+                                </div>
+
+                            </div>
+
                         </div>
-                        <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
-                    </div>
-                    <button pButton pRipple label="Sign In" class="w-full p-3 text-xl"></button>
+
+                        <div class="mb-3">
+
+                            <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
+                            <p-password id="password" formControlName="password" placeholder="Password" [toggleMask]="true" styleClass="w-full password-input-custom" [feedback]="false"></p-password>
+
+                            <div *ngIf="loginForm.controls.password.touched" class="mt-2">
+
+                                <div *ngIf="loginForm.controls.password.errors?.['required']" class="p-error">
+                                    Password is required
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3 p-error" *ngIf="responseError">
+                            {{ responseError }}
+                        </div>
+
+                        <div class="flex align-items-center justify-content-between mb-5">
+                            <div class="flex align-items-center">
+                                <p-checkbox id="remember" formControlName="remember" label="Remember me" [binary]="true" styleClass="mr-2"></p-checkbox>
+                            </div>
+                            <a class="font-medium no-underline ml-2 text-right cursor-pointer p-disabled" style="color: var(--primary-color)">Forgot password?</a>
+                        </div>
+
+                        <button pButton pRipple type="submit" [disabled]="loginForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
+
+                    </form>
                 </div>
             </div>
         </div>

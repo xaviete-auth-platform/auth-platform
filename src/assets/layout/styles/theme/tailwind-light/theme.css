@@ -103,6 +103,11 @@
   color: #e24c4c;
 }
 
+.p-error:before {
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='14px' viewBox='0 0 15 15' version='1.1'%3E%3Cg id='surface1'%3E%3Cpath style=' stroke:none;fill-rule:evenodd;fill:rgb(226,76,76);fill-opacity:1;' d='M 14.636719 11.765625 L 9.523438 1.265625 C 9.144531 0.492188 8.359375 0 7.5 0 C 6.640625 0 5.855469 0.492188 5.476562 1.265625 L 0.363281 11.765625 C 0.0234375 12.460938 0.0664062 13.285156 0.476562 13.941406 C 0.890625 14.601562 1.609375 15 2.386719 15 L 12.613281 15 C 13.390625 15 14.109375 14.601562 14.523438 13.941406 C 14.933594 13.285156 14.976562 12.460938 14.636719 11.765625 Z M 7.5 12.535156 C 7.042969 12.535156 6.667969 12.164062 6.667969 11.707031 C 6.667969 11.25 7.042969 10.875 7.5 10.875 C 7.957031 10.875 8.332031 11.25 8.332031 11.707031 C 8.332031 12.164062 7.957031 12.535156 7.5 12.535156 Z M 8.226562 9.855469 C 8.203125 10.234375 7.875 10.527344 7.5 10.53125 C 7.125 10.527344 6.796875 10.234375 6.773438 9.855469 C 6.703125 8.308594 6.628906 6.765625 6.554688 5.21875 C 6.546875 4.621094 7.089844 4.285156 7.5 4.285156 C 7.910156 4.285156 8.453125 4.621094 8.445312 5.21875 C 8.371094 6.765625 8.296875 8.308594 8.226562 9.855469 Z M 8.226562 9.855469 '/%3E%3C/g%3E%3C/svg%3E");
+    vertical-align: middle;
+}
+
 .p-text-secondary {
   color: #71717A;
 }
@@ -745,10 +750,6 @@ p-checkbox.ng-dirty.ng-invalid > .p-checkbox > .p-checkbox-box {
   background: #4F46E5;
 }
 
-.p-checkbox-label {
-  margin-left: 0.5rem;
-}
-
 .p-chips .p-chips-multiple-container {
   padding: 0.375rem 0.75rem;
 }
@@ -1196,7 +1197,7 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
   border-color: #4F46E5;
 }
 .p-inputtext.ng-dirty.ng-invalid {
-  border-color: #f0a9a7;
+  border-color: #e24c4c;
 }
 .p-inputtext.p-inputtext-sm {
   font-size: 0.875rem;

@@ -14,3 +14,47 @@ $gutter: 1rem; //for primeflex grid system
 /* Demos */
 @import "assets/demo/styles/flags/flags.css";
 @import "assets/demo/styles/badges.scss";
+
+
+/* Custom Theme */
+
+*:focus {
+    outline: 0;
+    box-shadow: unset !important;
+}
+
+.password-input-custom {
+    position: relative;
+    display: inline-block;
+
+    input[type="password"] {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    i.pi-eye {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        margin-top: -0.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+    }
+
+    i.pi-eye-slash {
+
+        &:hover {
+            cursor: pointer;
+        }
+
+    }
+
+}
+
+.logout-button a span {
+    color: #e24c4c !important;
+
+}
