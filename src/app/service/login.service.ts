@@ -14,7 +14,7 @@ export async function login(data: any) {
 
     try {
 
-        const response = await axios.post(`${config.API_ENDPOINT_TEST}/owner/login`, body);
+        const response = await axios.post(`${config.API_ENDPOINT}/owner/login`, body);
 
         const { status, message, owner } = response.data;
 
@@ -27,20 +27,10 @@ export async function login(data: any) {
 
     } catch (e: any) {
 
-        const { status, message } = e.response.data;
-
-        if (status === code.INTERNAL_SERVER_ERROR) {
-
-            return {
-                status: code.INTERNAL_SERVER_ERROR,
-                message: e.message,
-                error: e
-            }
-        }
-
         return {
-            status: status,
-            message: message
+            status: code.INTERNAL_SERVER_ERROR,
+            message: 'Something went wrong',
+            error: e
         }
     }
 }

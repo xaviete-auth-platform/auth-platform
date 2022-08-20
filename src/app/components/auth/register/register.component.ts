@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import {MenuItem} from "primeng/api";
 
 @Component({
-    selector: 'app-login',
+    selector: 'app-register',
     templateUrl: './register.component.html',
     styles: [`
         :host ::ng-deep .p-password input {
@@ -25,9 +26,26 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 })
 export class RegisterComponent {
 
-    valCheck: string[] = ['remember'];
-
-    password!: string;
+    steps!: MenuItem[];
 
     constructor(public layoutService: LayoutService) { }
+
+    ngOnInit() {
+
+        this.steps = [
+            {
+                label: 'Personal',
+                routerLink: 'personal'
+            },
+            {
+                label: 'Email',
+                routerLink: 'email'
+            },
+            {
+                label: 'Password',
+                routerLink: 'password'
+            }
+        ];
+
+    }
 }

@@ -4,9 +4,16 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
+import {RippleModule} from "primeng/ripple";
+import {StepsModule} from "primeng/steps";
+import {DividerModule} from "primeng/divider";
+import { PersonalComponent } from './personal/personal.component';
+import { EmailComponent } from './email/email.component';
+import { PasswordComponent } from './password/password.component';
+import {RegisterService} from "../../../service/register.service";
 
 @NgModule({
     imports: [
@@ -16,8 +23,20 @@ import { InputTextModule } from 'primeng/inputtext';
         CheckboxModule,
         InputTextModule,
         FormsModule,
-        PasswordModule
+        PasswordModule,
+        RippleModule,
+        StepsModule,
+        DividerModule,
+        ReactiveFormsModule
     ],
-    declarations: [RegisterComponent]
+    declarations: [
+        RegisterComponent,
+        PersonalComponent,
+        EmailComponent,
+        PasswordComponent
+    ],
+    providers: [
+        RegisterService
+    ]
 })
 export class RegisterModule { }

@@ -97,10 +97,23 @@
 
 .p-disabled, .p-component:disabled {
   opacity: 0.6;
+    cursor: not-allowed !important;
 }
 
 .p-error {
   color: #e24c4c;
+
+}
+
+.p-error.ng-star-inserted {
+    --auto-translate-x: 0px;
+    --auto-translate-y: 0px;
+    --auto-scale-x: 1;
+    --auto-scale-y: 1;
+    transform: translate(var(--auto-translate-x), var(--auto-translate-y), 0) scale(var(--auto-scale-x), var(--auto-scale-y));
+    transform-origin: 0 0;
+    will-change: transform;
+
 }
 
 .p-error:before {

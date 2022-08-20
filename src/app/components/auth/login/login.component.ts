@@ -5,6 +5,7 @@ import {login} from "../../../service/login.service";
 import { HttpStatusCode as code } from "../../../config/status";
 import {Router} from "@angular/router";
 import {isAuthenticated} from "../../../service/auth.service";
+import {inputErrorAnimation} from "../../../service/animation.service";
 
 @Component({
     selector: 'app-login',
@@ -26,7 +27,8 @@ import {isAuthenticated} from "../../../service/auth.service";
             margin-right: 1rem;
             color: var(--primary-color) !important;
         }
-    `]
+    `],
+    animations: [inputErrorAnimation()],
 })
 export class LoginComponent {
 

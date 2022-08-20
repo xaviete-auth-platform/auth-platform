@@ -1,0 +1,65 @@
+<div>
+
+    <div class="text-900 text-2xl font-medium mb-3">Email information</div>
+    <p-divider></p-divider>
+
+    <form [formGroup]="emailForm" (ngSubmit)="nextPage()">
+
+        <div class="mb-3">
+
+            <label for="email" class="block text-900 text-x font-medium mb-2">Email</label>
+            <input id="email" formControlName="email" type="text"  pInputText class="w-full p-3">
+
+            <div *ngIf="this.emailForm.get('email')?.invalid && this.emailForm.get('email')?.dirty" class="mt-2" [@inputErrorAnimation]="">
+
+                <div *ngIf="this.emailForm.get('email')?.errors?.['required']" class="p-error">
+                    Email is required
+                </div>
+
+                <div *ngIf="this.emailForm.get('email')?.errors?.['email']" class="p-error">
+                    Email is not valid
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <p>You need to verify you email before continue. <a (click)="verifyEmail()">Verify email</a></p>
+        </div>
+
+        <div class="mt-2 mb-3 p-error" *ngIf="verifyValidation" [@inputErrorAnimation]="">
+            {{ verifyValidationMessage }}
+        </div>
+
+        <div *ngIf="emailSent" class="mb-4">
+
+            <p-divider></p-divider>
+
+            <p>Please look at your inbox at <strong>{{ this.userEmail }}</strong> and insert the verification code</p>
+
+            <form [formGroup]="verificationCodeForm">
+                <label for="code" class="block text-900 text-x font-medium mb-2">Verification code</label>
+                <input id="code" type="number" formControlName="code" pInputText class="w-full p-3">
+
+                <div *ngIf="verificationCodeForm.get('code')?.invalid && verificationCodeForm.get('code')?.dirty" class="mt-2"  [@inputErrorAnimation]="">
+
+                    <div *ngIf="verificationCodeForm.get('code')?.errors?.['required']" class="p-error">
+                        Verification code is required
+                    </div>
+
+                </div>
+
+                <div class="mt-2 mb-3 p-error" *ngIf="verifyCodeValidation"  [@inputErrorAnimation]="">
+                    {{ verifyCodeMessage }}
+                </div>
+            </form>
+        </div>
+
+        <button pButton pRipple type="submit" [disabled]="emailForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
+
+    </form>
+</div>
+
+
+
