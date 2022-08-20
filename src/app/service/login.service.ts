@@ -18,6 +18,14 @@ export async function login(data: any) {
 
         const { status, message, owner } = response.data;
 
+        if (status !== code.OK) {
+            return {
+                status: status,
+                message: message
+            }
+
+        }
+
         setUser(owner, remember);
 
         return {

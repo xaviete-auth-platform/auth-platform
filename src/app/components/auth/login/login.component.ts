@@ -4,7 +4,7 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {login} from "../../../service/login.service";
 import { HttpStatusCode as code } from "../../../config/status";
 import {Router} from "@angular/router";
-import {isAuthenticated} from "../../../service/auth.service";
+import {isAuthenticated, setUser} from "../../../service/auth.service";
 import {inputErrorAnimation} from "../../../service/animation.service";
 
 @Component({
@@ -69,7 +69,12 @@ export class LoginComponent {
 
         // Show response error
         if (response.status !== code.OK) {
-            this.responseError = response.message;
+            this.responseError = 'Invalid credentials';
+
+            setInterval(() => {
+                this.responseError = '';
+            }, 5000);
+
             return;
         }
 

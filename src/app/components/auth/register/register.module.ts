@@ -14,6 +14,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { EmailComponent } from './email/email.component';
 import { PasswordComponent } from './password/password.component';
 import {RegisterService} from "../../../service/register.service";
+import {ProgressBarModule} from "primeng/progressbar";
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {RegisterService} from "../../../service/register.service";
         RippleModule,
         StepsModule,
         DividerModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ProgressBarModule
     ],
     declarations: [
         RegisterComponent,

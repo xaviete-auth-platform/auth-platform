@@ -1,6 +1,6 @@
 <div>
 
-    <div class="text-900 text-2xl font-medium mb-3">Email information</div>
+    <div class="text-900 text-2xl font-medium mb-3">Contact information</div>
     <p-divider></p-divider>
 
     <form [formGroup]="emailForm" (ngSubmit)="nextPage()">
@@ -56,7 +56,7 @@
             </form>
         </div>
 
-        <button pButton pRipple type="submit" [disabled]="emailForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
+        <button pButton pRipple type="submit" [disabled]="emailForm.invalid || verificationCodeForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
 
     </form>
 </div>

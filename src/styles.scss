@@ -15,6 +15,13 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/flags/flags.css";
 @import "assets/demo/styles/badges.scss";
 
+/* Logo font family */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@500&display=swap');
+
+.text-logo {
+    font-family: 'Oswald', sans-serif;
+}
+
 
 /* Custom Theme */
 
@@ -62,3 +69,21 @@ a:hover {
     color: #e24c4c !important;
 }
 
+.list-password-strength {
+    list-style: none;
+
+    i {
+        font-size: 18px;
+        position: relative;
+        bottom: 1px;
+    }
+
+    .red {
+        color: #e24c4c;
+    }
+
+    .green {
+        color: #1ea97c;
+    }
+
+}
