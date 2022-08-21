@@ -87,3 +87,23 @@ a:hover {
     }
 
 }
+
+.background1 .p-progressbar .p-progressbar-value {
+    background: red !important;
+}
+
+.disabled-link {
+    opacity: 0.6;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.success-icon {
+    color: #1ea97c;
+    font-size: 18px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 2px;
+}

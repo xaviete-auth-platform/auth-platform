@@ -18,7 +18,15 @@ export class PersonalComponent implements OnInit {
     // @HostListener allows us to also guard against browser refresh, close, etc.
     @HostListener('window:beforeunload')
     canDeactivate(): Observable<boolean> | boolean {
-        return !this.personalForm.touched || !this.personalForm.dirty;
+
+        if (this.personalForm.touched || this.personalForm.dirty) {
+            return false;
+        }
+
+        return !(this.personalForm.personalInformation.firstname ||
+            this.personalForm.personalInformation.lastname ||
+            this.personalForm.personalInformation.username);
+
     }
 
     constructor(private router: Router, private fb: FormBuilder, public registerService: RegisterService) {}
@@ -48,9 +56,7 @@ export class PersonalComponent implements OnInit {
         if (this.personalForm.valid) {
 
             this.registerService.userInformation.personalInformation = this.personalForm.value;
-            console.log(this.registerService.userInformation);
-
-            this.router.navigate(['/auth/register/email']);
+            this.router.navigate(['/register/email']);
 
         }
     }

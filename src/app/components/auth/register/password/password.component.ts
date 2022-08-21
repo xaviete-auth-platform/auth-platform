@@ -4,15 +4,22 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {RegisterService} from "../../../../service/register.service";
 import {Observable} from "rxjs";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
+import {inputErrorAnimation} from "../../../../service/animation.service";
+import { HttpStatusCode as code } from "../../../../config/status";
+import {setUser} from "../../../../service/auth.service";
 
 @Component({
     selector: 'app-password',
-    templateUrl: './password.component.html'
+    templateUrl: './password.component.html',
+    animations: [inputErrorAnimation()]
 })
 export class PasswordComponent implements OnInit {
 
+    backgroundColor!: any;
+
     passwordInformation: any;
     passwordForm: any;
+
     progressValue!: number;
     progressColor: string = '#e24c4c';
     progressLabel: string = 'Weak';
@@ -20,8 +27,11 @@ export class PasswordComponent implements OnInit {
     passwordStrength = [
         { icon: 'pi-times-circle', class: 'red', text: 'At least one lowercase', regex: "(.*[a-z].*)", valid: false  },
         { icon: 'pi-times-circle', class: 'red', text: 'At least one uppercase or one number', regex: "(?=.*\\d)|(?=.*[A-Z])", valid: false },
-        { icon: 'pi-times-circle', class: 'red', text: 'Minimum 6 characters', regex: "(.{6,})", valid: false },
-    ]
+        { icon: 'pi-times-circle', class: 'red', text: 'Minimum 6 characters', regex: "(.{6,})", valid: false }
+    ];
+
+    backendResponse: boolean = false;
+    backendResponseMessage: string = '';
 
     // @HostListener allows us to also guard against browser refresh, close, etc.
     @HostListener('window:beforeunload')
@@ -33,8 +43,10 @@ export class PasswordComponent implements OnInit {
 
     ngOnInit(): void {
 
+        this.backgroundColor = 'background-1';
+
         if (this.registerService.validatePasswordInformationStep()) {
-            this.router.navigate(['/auth/register/email']);
+            this.router.navigate(['/register/email']);
             return;
         }
 
@@ -93,17 +105,29 @@ export class PasswordComponent implements OnInit {
 
             this.registerService.userInformation.passwordInformation = this.passwordForm.value;
 
-            // TODO: Complete registration validation
             const response = await this.registerService.saveUser();
 
-            console.log("Complete registration");
+            if (response.status !== code.CREATED) {
 
-            console.log(this.registerService.userInformation);
+                this.backendResponse = true;
+                this.backendResponseMessage = response.message;
+                return;
+            }
 
+            this.backendResponse = false;
+            this.backendResponseMessage = '';
+
+            // Auto login user
+            await setUser(response.user);
+
+            this.router.navigate(['/']);
 
         }
+    }
 
-
+    validateRegex() {
+        const { password } = this.passwordForm.value;
+        return !(password.match("(.*[a-z].*)") && password.match("(?=.*\\d)|(?=.*[A-Z])") && password.match("(.{6,})"));
     }
 
 }

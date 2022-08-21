@@ -14,7 +14,7 @@ import { AppLayoutComponent } from "./layout/layout/app.layout.component";
                     { path: 'uikit', loadChildren: () => import('./components/uikit/uikit.module').then(m => m.UikitModule) }
                 ],
             },
-            { path: 'auth', loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule) },
+            { path: '', loadChildren: () => import('./components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'pages/notfound', component: NotfoundComponent },
             { path: '**', redirectTo: 'pages/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })

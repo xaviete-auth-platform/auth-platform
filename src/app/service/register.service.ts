@@ -52,7 +52,7 @@ export class RegisterService {
 
             return {
                 status: 500,
-                message: 'Something went wrong',
+                message: e.message,
                 error: e
             }
 
@@ -76,7 +76,7 @@ export class RegisterService {
 
                 return {
                     status: 500,
-                    message: 'Something went wrong',
+                    message: 'Something went wrong. Please try again.',
                     error: e
                 }
             }
@@ -106,7 +106,7 @@ export class RegisterService {
 
             return {
                 status: 500,
-                message: 'Something went wrong',
+                message: 'Something went wrong. Please try again.',
                 error: e
             }
 

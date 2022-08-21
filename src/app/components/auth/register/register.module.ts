@@ -15,6 +15,7 @@ import { EmailComponent } from './email/email.component';
 import { PasswordComponent } from './password/password.component';
 import {RegisterService} from "../../../service/register.service";
 import {ProgressBarModule} from "primeng/progressbar";
+import {CountdownComponent} from "ngx-countdown";
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import {ProgressBarModule} from "primeng/progressbar";
         StepsModule,
         DividerModule,
         ReactiveFormsModule,
-        ProgressBarModule
+        ProgressBarModule,
+        CountdownComponent
     ],
     declarations: [
         RegisterComponent,

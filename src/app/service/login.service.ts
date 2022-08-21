@@ -37,7 +37,7 @@ export async function login(data: any) {
 
         return {
             status: code.INTERNAL_SERVER_ERROR,
-            message: 'Something went wrong',
+            message: 'Something went wrong. Please try again.',
             error: e
         }
     }
