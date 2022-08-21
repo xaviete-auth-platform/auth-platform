@@ -1,9 +1,8 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {RegisterService} from "../../../../service/register.service";
 import {Observable} from "rxjs";
-import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
 import {inputErrorAnimation} from "../../../../service/animation.service";
 import { HttpStatusCode as code } from "../../../../config/status";
 import {setUser} from "../../../../service/auth.service";
@@ -15,13 +14,10 @@ import {setUser} from "../../../../service/auth.service";
 })
 export class PasswordComponent implements OnInit {
 
-    backgroundColor!: any;
-
     passwordInformation: any;
     passwordForm: any;
 
     progressValue!: number;
-    progressColor: string = '#e24c4c';
     progressLabel: string = 'Weak';
 
     passwordStrength = [
@@ -42,8 +38,6 @@ export class PasswordComponent implements OnInit {
     constructor(private router: Router, private fb: FormBuilder, public registerService: RegisterService) {}
 
     ngOnInit(): void {
-
-        this.backgroundColor = 'background-1';
 
         if (this.registerService.validatePasswordInformationStep()) {
             this.router.navigate(['/register/email']);
@@ -87,13 +81,13 @@ export class PasswordComponent implements OnInit {
         this.progressValue = (counter / this.passwordStrength.length) * 100;
 
         if (this.progressValue >= 67) {
-            this.progressColor = '#00a65a';
+            this.changeProgressColor('#00a65a');
             this.progressLabel = 'Strong';
         } else if (this.progressValue >= 34) {
-            this.progressColor = '#f39c12';
+            this.changeProgressColor('#f39c12');
             this.progressLabel = 'Medium';
         } else {
-            this.progressColor = '#e24c4c';
+            this.changeProgressColor('#e24c4c');
             this.progressLabel = 'Weak';
         }
 
@@ -128,6 +122,10 @@ export class PasswordComponent implements OnInit {
     validateRegex() {
         const { password } = this.passwordForm.value;
         return !(password.match("(.*[a-z].*)") && password.match("(?=.*\\d)|(?=.*[A-Z])") && password.match("(.{6,})"));
+    }
+
+    changeProgressColor(color: string) {
+
     }
 
 }
