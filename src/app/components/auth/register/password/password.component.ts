@@ -114,7 +114,7 @@ export class PasswordComponent implements OnInit {
             // Auto login user
             await setUser(response.user);
 
-            this.router.navigate(['/']);
+            this.router.navigate(['/panel']);
 
         }
     }

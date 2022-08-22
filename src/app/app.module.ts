@@ -11,14 +11,22 @@ import { EventService } from './service/event.service';
 import { IconService } from './service/icon.service';
 import { NodeService } from './service/node.service';
 import { PhotoService } from './service/photo.service';
-
+import {LandingComponent} from "./components/pages/landing/landing.component";
+import {RippleModule} from "primeng/ripple";
+import {StyleClassModule} from "primeng/styleclass";
+import {DividerModule} from "primeng/divider";
+import {ButtonModule} from "primeng/button";
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent
+        AppComponent, NotfoundComponent, LandingComponent
     ],
     imports: [
         AppRoutingModule,
-        AppLayoutModule
+        AppLayoutModule,
+        RippleModule,
+        StyleClassModule,
+        DividerModule,
+        ButtonModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

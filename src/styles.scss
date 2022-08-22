@@ -103,3 +103,104 @@ a:hover {
     position: relative;
     bottom: 2px;
 }
+
+.layout-topbar-menu i {
+    color: var(--primary-color)
+}
+
+/* Panel css page */
+
+.panel-page {
+
+    .title {
+        margin-left: 66px;
+    }
+
+    .card-container {
+        box-sizing: border-box;
+        min-width: 0;
+        overflow-y: auto;
+        -webkit-box-pack: center;
+        justify-content: center;
+        margin-left: 16px;
+        padding-bottom: 32px;
+        padding-top: 8px;
+        grid-template-columns: repeat(auto-fill, 180px);
+        gap: 24px;
+        display: grid;
+    }
+
+
+    .project-card {
+        transition: all 0.3s ease 0s;
+        width: 180px;
+
+        .card-header {
+            box-sizing: border-box;
+            background-color: rgb(9, 14, 36);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 62px;
+            font-weight: 500;
+            width: 180px;
+            height: 180px;
+            line-height: 180px;
+            min-height: 180px;
+            min-width: 180px;
+            text-align: center;
+            border-radius: 8px 8px 0px 0px;
+            color: rgb(255, 255, 255);
+            letter-spacing: -4px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .p-card-content {
+            padding: 0;
+            min-height: 4em;
+
+            h2 {
+                text-overflow: ellipsis;
+                white-space: initial;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                font-size: 15px;
+                line-height: 18px;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: translate3d(0px, -4px, 0px);
+        }
+
+    }
+
+    .no-project-card {
+
+        .content {
+            min-width: 500px;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                min-width: auto;
+            }
+        }
+
+
+
+    }
+}
+
+.container {
+    max-width: 960px;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 25px;
+    margin: 0 auto;
+}
+
+

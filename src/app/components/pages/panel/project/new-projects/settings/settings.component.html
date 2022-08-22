@@ -1,0 +1,19 @@
+<div>
+    <div class="text-900 text-2xl font-medium mb-3">Create new project</div>
+    <p-divider></p-divider>
+
+    <form *ngIf="settingsForm" [formGroup]="settingsForm" (ngSubmit)="nextPage()">
+
+        <div class="mb-3">
+            <p>Settings temporally unavailable!</p>
+        </div>
+
+        <div class="mt-2 mb-3 p-error" *ngIf="backendResponse"  [@inputErrorAnimation]="">
+            {{ backendResponseMessage }}
+        </div>
+
+        <button pButton pRipple type="submit" [disabled]="settingsForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
+
+    </form>
+</div>
+

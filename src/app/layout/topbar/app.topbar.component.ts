@@ -12,16 +12,12 @@ export class AppTopBarComponent {
 
     items!: MenuItem[];
 
-    constructor(public layoutService: LayoutService, private router: Router) { }
+    constructor(public layoutService: LayoutService, public router: Router) { }
 
     ngOnInit() {
 
         this.items = [{
             items: [
-                {
-                    label: 'Profile',
-                    icon: 'pi pi-user',
-                },
                 {
                     label: 'Logout',
                     icon: 'pi pi-sign-out',
@@ -37,6 +33,6 @@ export class AppTopBarComponent {
 
     logout(): void {
         logout();
-        this.router.navigate(['/auth/login']);
+        this.router.navigate(['/']);
     }
 }

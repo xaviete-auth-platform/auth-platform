@@ -16,9 +16,10 @@ import { AppTopBarComponent } from '../topbar/app.topbar.component';
 import { AppFooterComponent } from '../footer/app.footer.component';
 import { AppConfigModule } from '../config/config.module';
 import { AppSidebarComponent } from "../sidebar/app.sidebar.component";
-import { AppLayoutComponent } from "./app.layout.component";
+import { AppDashboardLayoutComponent } from "./dashboard/app-dashboard-layout.component";
 import {SplitButtonModule} from "primeng/splitbutton";
 import {MenuModule} from "primeng/menu";
+import {AppPanelLayoutComponent} from "./panel/app-panel-layout.component";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import {MenuModule} from "primeng/menu";
         AppFooterComponent,
         AppMenuComponent,
         AppSidebarComponent,
-        AppLayoutComponent,
+        AppDashboardLayoutComponent,
+        AppPanelLayoutComponent
     ],
     imports: [
         BrowserModule,
@@ -45,6 +47,6 @@ import {MenuModule} from "primeng/menu";
         SplitButtonModule,
         MenuModule
     ],
-    exports: [AppLayoutComponent]
+    exports: [AppDashboardLayoutComponent, AppPanelLayoutComponent]
 })
 export class AppLayoutModule { }

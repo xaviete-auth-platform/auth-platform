@@ -6,11 +6,11 @@ export function setUser(user: any, rememberMe: boolean = false) {
     }
 
     if (rememberMe) {
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('auth-uid', user._id);
         return;
     }
 
-    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('auth-uid', user._id);
 
 }
 
@@ -19,14 +19,14 @@ export function isAuthenticated() {
 }
 
 export function getUser() {
-    const user = sessionStorage.getItem('user') || localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    const uid = sessionStorage.getItem('auth-uid') || localStorage.getItem('auth-uid');
+    return uid ? uid : null;
 }
 
 // TODO: Validar que cosa eliminar no eliminar a boleo
 export function logout() {
-    sessionStorage.removeItem('user');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('auth-uid');
+    localStorage.removeItem('auth-uid');
 }
 
 

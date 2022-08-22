@@ -8,16 +8,16 @@
         <div class="mb-3">
 
             <label for="email" class="block text-900 text-x font-medium mb-2">Email</label>
-            <input id="email" autocomplete="email" formControlName="email" (keyup)="disableVerification()" type="text"  pInputText class="w-full p-3">
+            <input id="email" autocomplete="email" autofocus formControlName="email" (keyup)="disableVerification()" type="text"  pInputText class="w-full p-3">
 
             <div *ngIf="this.emailForm.get('email')?.invalid && this.emailForm.get('email')?.dirty" class="mt-2" [@inputErrorAnimation]="">
 
                 <div *ngIf="this.emailForm.get('email')?.errors?.['required']" class="p-error">
-                    Please enter your email
+                    Please entry your email
                 </div>
 
                 <div *ngIf="this.emailForm.get('email')?.errors?.['email']" class="p-error">
-                    Email format is invalid
+                    Please entry a valid email
                 </div>
 
             </div>
@@ -47,7 +47,7 @@
                 <div *ngIf="verificationCodeForm.get('code')?.invalid && verificationCodeForm.get('code')?.dirty" class="mt-2"  [@inputErrorAnimation]="">
 
                     <div *ngIf="verificationCodeForm.get('code')?.errors?.['required']" class="p-error">
-                        Please enter a valid verification code
+                        Please entry a valid verification code
                     </div>
 
                 </div>

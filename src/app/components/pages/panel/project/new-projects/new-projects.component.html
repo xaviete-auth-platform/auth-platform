@@ -1,0 +1,17 @@
+<div class="flex align-items-start justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="grid justify-content-center align-items-center flex-column p-2 lg:p-0" style="min-width:80%">
+
+        <div class="col-12 xl:col-6 mt-6">
+            <p-steps [model]="steps"></p-steps>
+        </div>
+
+        <div class="col-12 xl:col-6" style="border-radius:5px; padding:0.3rem;">
+            <div class="h-full w-full m-0 py-7 px-4 shadow-4" style="border-radius:5px;">
+                <div class="w-full md:w-10 mx-auto">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

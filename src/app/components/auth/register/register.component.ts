@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import {MenuItem} from "primeng/api";
+import {isAuthenticated} from "../../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-register',
@@ -28,9 +30,13 @@ export class RegisterComponent {
 
     steps!: MenuItem[];
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService, private router: Router) { }
 
     ngOnInit() {
+
+        if (isAuthenticated()) {
+            this.router.navigate(['/']);
+        }
 
         this.steps = [
             {

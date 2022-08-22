@@ -23,10 +23,6 @@ export class RegisterService {
         return this.userInformation;
     }
 
-    setUserInformation(userInformation: any) {
-        this.userInformation = userInformation;
-    }
-
     validateEmailInformationStep() {
         return this.userInformation.personalInformation.firstname == '' ||
             this.userInformation.personalInformation.lastname == '' ||

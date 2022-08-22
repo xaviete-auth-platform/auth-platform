@@ -1,0 +1,26 @@
+<div>
+    <div class="text-900 text-2xl font-medium mb-3">Create new project</div>
+    <p-divider></p-divider>
+
+    <form *ngIf="detailsForm" [formGroup]="detailsForm" (ngSubmit)="nextPage()">
+
+        <div class="mb-3">
+
+            <label for="name" class="block text-900 text-x font-medium mb-2">Name</label>
+            <input id="name" autocomplete="off" autofocus formControlName="name" type="text" pInputText class="w-full p-3">
+            <small id="name-help" class="block mt-1">Set an awesome name for you amazing project</small>
+
+            <div *ngIf="detailsForm.get('name')?.invalid && detailsForm.get('name')?.dirty" class="mt-2" [@inputErrorAnimation]="">
+
+                <div *ngIf="detailsForm.get('name')?.errors?.['required']" class="p-error">
+                    Please entry a project name
+                </div>
+
+            </div>
+
+        </div>
+
+        <button pButton pRipple type="submit" [disabled]="detailsForm.invalid" label="Continue" class="w-full p-3 text-xl"></button>
+
+    </form>
+</div>

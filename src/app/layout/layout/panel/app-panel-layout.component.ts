@@ -1,16 +1,15 @@
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { MenuService } from '../menu/app.menu.service';
-import { LayoutService } from "../service/app.layout.service";
-import { AppSidebarComponent } from "../sidebar/app.sidebar.component";
-import { AppTopBarComponent } from '../topbar/app.topbar.component';
+import { MenuService } from '../../menu/app.menu.service';
+import { LayoutService } from "../../service/app.layout.service";
+import { AppSidebarComponent } from "../../sidebar/app.sidebar.component";
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './app.layout.component.html'
+    templateUrl: './app-panel-layout.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
+export class AppPanelLayoutComponent implements OnDestroy {
 
     overlayMenuOpenSubscription: Subscription;
 
@@ -19,6 +18,7 @@ export class AppLayoutComponent implements OnDestroy {
     @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
 
     constructor(private menuService: MenuService, public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {

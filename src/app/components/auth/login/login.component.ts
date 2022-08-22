@@ -79,7 +79,7 @@ export class LoginComponent {
         }
 
         // Redirect to home page
-        this.router.navigate(['/']);
+        this.router.navigate(['/panel']);
     }
 
 

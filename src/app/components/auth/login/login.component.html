@@ -20,7 +20,7 @@
                         <div class="mb-3">
 
                             <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
-                            <input id="email" type="text" formControlName="email" pInputText class="w-full p-3">
+                            <input id="email" type="text" formControlName="email" autofocus pInputText class="w-full p-3">
 
                             <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.dirty" [@inputErrorAnimation]="" class="mt-2">
 
@@ -62,7 +62,7 @@
                         <button pButton pRipple type="submit" [disabled]="loginForm.invalid" label="Sign in" class="w-full p-3 text-xl"></button>
 
                         <div class="mt-3 mb-4">
-                            <p>Don't have an account? <a routerLink="/auth/register">Sign up</a></p>
+                            <p>Don't have an account? <a routerLink="/register">Sign up</a></p>
                         </div>
 
                     </form>
